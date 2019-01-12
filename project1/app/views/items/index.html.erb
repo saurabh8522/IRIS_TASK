@@ -1,0 +1,41 @@
+
+<p id="notice"><%= notice %></p>
+
+<h1 class="container text-center heading">AVAILABLE ITEMS</h1>
+    <% @items.each do |item| %>
+    <div class="index">
+<div class="container">
+  <div class="row">
+  <div class="col-sm">
+    <div class="thumbnail">
+      <%= image_tag(item.image.url(:medium)) %>
+      <div class="caption">
+        <h3><%= item.title %></h3>
+        <p><%= item.description %></p>
+        <% if item.sell == true && item.user_id != current_user.id %>
+        <p><%= link_to 'Buy', item , class: "btn btn-outline-primary btn-sm" %>
+            <% end %>
+            <% if item.share == true && item.user_id != current_user.id %>
+      <%= link_to 'Borrow', item , class: "btn btn-outline-primary btn-sm" %>
+            <% end %>
+            <% if item.user_id == current_user.id %>
+      <%= link_to 'Edit', edit_item_path(item) , class: "btn btn-outline-primary btn-sm" %>
+      <% end %>
+      <% if item.sell == true && item.user_id == current_user.id %>
+      <%= link_to 'Mark As Sold', item ,method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></p>  
+      <% end %>
+      <hr>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    <% end %>
+    <form>
+    <%= link_to 'Add New Item', new_item_path , class: "btn btn-primary", align: "center" %>
+</form>
+<hr>
+

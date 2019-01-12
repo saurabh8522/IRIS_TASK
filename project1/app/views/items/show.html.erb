@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<div class="show">
+<div class="container">
+<p>
+  <%= image_tag(@item.image.url(:medium)) %>
+</p>
+<ul class="list-group">
+  <li class="list-group-item"><strong>Name:</strong>
+  <%= @item.user_name %></li>
+  <li class="list-group-item"><strong>Contact number:</strong>
+  <%= @item.contact_number %></li>
+  <li class="list-group-item"><strong>Title:</strong>
+  <%= @item.title %></li>
+  <li class="list-group-item"><strong>Description:</strong>
+  <%= @item.description %></li>
+  <li class="list-group-item"><strong>Expected Cost:</strong>
+  <%= @item.cost %></li>
+  
+  
+</ul>
+<br>
+<% if @item.user_id == current_user.id %>
+<%= link_to 'Edit', edit_item_path(@item) , class: "btn btn-primary" %> |
+<%= link_to 'Back', items_path, class: "btn btn-outline-primary" %>
+<% else %>
+<%= link_to 'Back', items_path, class: "btn btn-outline-primary" %>
+<% end %>
+</div>
+</div>

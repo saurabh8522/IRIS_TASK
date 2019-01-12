@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_name: MyString
+  contact_number: MyString
+  title: MyString
+  description: MyText
+  share: false
+  sell: false
+  cost: 1
+
+two:
+  user_name: MyString
+  contact_number: MyString
+  title: MyString
+  description: MyText
+  share: false
+  sell: false
+  cost: 1

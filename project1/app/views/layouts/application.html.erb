@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Neuton" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-light justify-content-between" >
+  <a class="navbar-brand">NITK</a>
+  <form class="form-inline">
+    <% if user_signed_in? %>
+    <%= link_to "Account", edit_user_registration_path, class: "form-control mr-sm-2" %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete,class: "btn btn-outline-success my-2 my-sm-0" %>
+    <% else %>
+    <%= link_to "Sign Up", new_user_registration_path, class: "form-control mr-sm-2" %>
+    <%= link_to 'Sign In', new_user_session_path, method: :delete,class: "btn btn-outline-success my-2 my-sm-0" %>
+    <% end %>
+  </form>
+</nav>
+<div class="container">
+  <%= yield %>
+</div>
+  </body>
+</html>
